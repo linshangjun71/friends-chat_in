@@ -1,0 +1,16 @@
+services:
+  synapse:
+    image: ghcr.io/element-hq/synapse@sha256:3c2900775df229b91ae0f21f2c98070e0da48d4e135a9c5b567b029be57fdb56
+    platform: linux/amd64
+    pull_policy: never
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./state/synapse:/data
+    mem_limit: 1g
+    cpus: 1.0
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
